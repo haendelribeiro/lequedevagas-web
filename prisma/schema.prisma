@@ -1,0 +1,79 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Area {
+  FRONTEND
+  BACKEND
+  DADOS
+  QA
+  DESIGN
+}
+
+enum Senioridade {
+  ESTAGIO
+  JUNIOR
+  PLENO
+}
+
+enum Papel {
+  CANDIDATA
+  EMPRESA
+}
+
+model Empresa {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  nome        String
+  sobre       String
+  site        String
+  localizacao String
+  logo        String
+  vagas       Vaga[]
+  usuarios    Usuario[]
+  createdAt   DateTime @default(now())
+}
+
+model Vaga {
+  id              String        @id @default(cuid())
+  titulo          String
+  area            Area
+  senioridade     Senioridade
+  local           String
+  aceitaIniciante Boolean       @default(true)
+  descricao       String
+  empresaId       String
+  empresa         Empresa       @relation(fields: [empresaId], references: [id])
+  candidaturas    Candidatura[]
+  publicadaEm     DateTime      @default(now())
+}
+
+model Usuario {
+  id           String        @id @default(cuid())
+  nome         String
+  email        String        @unique
+  senhaHash    String
+  papel        Papel         @default(CANDIDATA)
+  empresaId    String?
+  empresa      Empresa?      @relation(fields: [empresaId], references: [id])
+  candidaturas Candidatura[]
+  createdAt    DateTime      @default(now())
+}
+
+model Candidatura {
+  id           String   @id @default(cuid())
+  vagaId       String
+  vaga         Vaga     @relation(fields: [vagaId], references: [id])
+  usuarioId    String?
+  usuario      Usuario? @relation(fields: [usuarioId], references: [id])
+  nome         String
+  email        String
+  linkedin     String
+  apresentacao String
+  criadoEm     DateTime @default(now())
+}
