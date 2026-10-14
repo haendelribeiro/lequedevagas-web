@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import FormularioCandidatura from './FormularioCandidatura';
 import BotaoFavorito from '../BotaoFavorito';
+import BotaoCompartilhar from '../BotaoCompartilhar';
 
 type Props = {
   params: Promise<{
@@ -64,6 +65,7 @@ export default async function DetalheVagaPage({ params }: Props) {
             >
               ✏️ Editar Vaga
             </Link>
+            <BotaoCompartilhar vagaId={vaga.id} titulo={vaga.titulo} empresa={vaga.empresa} />
             <BotaoFavorito vagaId={vaga.id} />
           </div>
         </div>
@@ -82,6 +84,11 @@ export default async function DetalheVagaPage({ params }: Props) {
           <span className="bg-[#08070E] px-3 py-1.5 rounded-lg border border-white/10 text-white">
             🎓 Nível: {vaga.senioridade}
           </span>
+          {vaga.salario && (
+            <span className="bg-[#5fd08a]/10 border border-[#5fd08a]/30 px-3 py-1.5 rounded-lg text-[#5fd08a] font-bold">
+              💰 Remuneração: {vaga.salario} ({vaga.regime || 'CLT'})
+            </span>
+          )}
           <span className="bg-[#08070E] px-3 py-1.5 rounded-lg border border-white/10 text-[#8B84A0]">
             📅 Publicada em: {vaga.publicadaEm}
           </span>

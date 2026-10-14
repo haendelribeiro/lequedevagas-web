@@ -3,6 +3,7 @@ import { listarVagas } from '@/data/vagas';
 import PaginacaoVagas from './PaginacaoVagas';
 import EstatisticasMercado from './EstatisticasMercado';
 import BotaoFavorito from './BotaoFavorito';
+import BotaoCompartilhar from './BotaoCompartilhar';
 
 export const metadata = {
   title: 'Mural de Vagas · Leque de Vagas',
@@ -176,8 +177,19 @@ export default async function MuralDeVagasPage({ searchParams }: Props) {
                     </Link>
                   </h2>
 
-                  <p className="text-xs text-[#8B84A0] mt-1">
-                    📍 {vaga.local} · 🏷️ {vaga.area} · 🎓 {vaga.senioridade}
+                  <p className="text-xs text-[#8B84A0] mt-1 flex flex-wrap items-center gap-1.5">
+                    <span>📍 {vaga.local}</span>
+                    <span>·</span>
+                    <span>🏷️ {vaga.area}</span>
+                    <span>·</span>
+                    <span>🎓 {vaga.senioridade}</span>
+                    {vaga.salario && (
+                      <>
+                        <span>·</span>
+                        <span className="text-[#5fd08a] font-semibold">💰 {vaga.salario}</span>
+                        <span className="px-1.5 py-0.2 rounded bg-white/5 border border-white/10 text-[10px] text-[#B4AEC6]">{vaga.regime || 'CLT'}</span>
+                      </>
+                    )}
                   </p>
 
                   <p className="text-sm text-[#B4AEC6] mt-3 line-clamp-2">
@@ -201,7 +213,8 @@ export default async function MuralDeVagasPage({ searchParams }: Props) {
 
                 <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
                   <span className="text-xs text-[#8B84A0]">Publicada em {vaga.publicadaEm}</span>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
+                    <BotaoCompartilhar vagaId={vaga.id} titulo={vaga.titulo} empresa={vaga.empresa} />
                     <Link 
                       href={`/vagas/${vaga.id}/editar`}
                       className="text-xs text-[#8B84A0] hover:text-white"

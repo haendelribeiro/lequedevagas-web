@@ -1,5 +1,6 @@
 export type AreaTech = 'Front-end' | 'Back-end' | 'Dados' | 'QA' | 'Design';
 export type Senioridade = 'Estágio' | 'Júnior' | 'Pleno';
+export type RegimeContratacao = 'CLT' | 'PJ' | 'Estágio';
 
 export type Vaga = {
   id: string;
@@ -12,6 +13,8 @@ export type Vaga = {
   aceitaIniciante: boolean;
   descricao: string;
   publicadaEm: string;
+  salario?: string;
+  regime?: RegimeContratacao;
   tags?: string[];
 };
 
@@ -25,6 +28,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Júnior",
     local: "Remoto",
     aceitaIniciante: true,
+    salario: "R$ 3.800 - R$ 4.500",
+    regime: "CLT",
     descricao: "Buscamos uma pessoa desenvolvedora motivada para atuar na criação de interfaces modernas utilizando React, Next.js e Tailwind CSS. Aceitamos pessoas em transição de carreira que tenham projetos práticos construídos.",
     publicadaEm: "2026-10-01",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"]
@@ -38,6 +43,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Estágio",
     local: "Híbrido (São Paulo - SP)",
     aceitaIniciante: true,
+    salario: "R$ 1.800 + VR/VT",
+    regime: "Estágio",
     descricao: "Oportunidade de estágio para estudantes de tecnologia que desejam aprender Node.js, TypeScript e arquitetura de microsserviços na prática. Mentoria dedicada garantida.",
     publicadaEm: "2026-10-02",
     tags: ["Node.js", "TypeScript", "SQL", "APIs REST"]
@@ -51,6 +58,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Júnior",
     local: "Remoto",
     aceitaIniciante: true,
+    salario: "R$ 3.500 - R$ 4.200",
+    regime: "CLT",
     descricao: "Vaga focada em estruturação de Dashboards e consultas SQL para apoio à tomada de decisão. Procuramos pessoas com raciocínio analítico afiado e vontade de aprender PowerBI e Python.",
     publicadaEm: "2026-10-03",
     tags: ["Python", "SQL", "PowerBI", "Pandas"]
@@ -64,6 +73,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Júnior",
     local: "Presencial (João Pessoa - PB)",
     aceitaIniciante: true,
+    salario: "R$ 3.200 - R$ 3.800",
+    regime: "CLT",
     descricao: "Atuação no planejamento de casos de testes funcionais e início no aprendizado de automação de testes E2E com Cypress e Playwright.",
     publicadaEm: "2026-10-03",
     tags: ["Playwright", "Cypress", "QA", "Testes E2E"]
@@ -77,6 +88,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Júnior",
     local: "Remoto",
     aceitaIniciante: true,
+    salario: "R$ 3.400 - R$ 4.000",
+    regime: "PJ",
     descricao: "Criação de protótipos navegáveis no Figma, wireframes e testes de usabilidade para produtos digitais. É fundamental apresentar um portfólio com estudos de caso fictícios ou reais.",
     publicadaEm: "2026-10-04",
     tags: ["Figma", "UI Design", "UX Research", "Wireframes"]
@@ -90,6 +103,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Pleno",
     local: "Remoto",
     aceitaIniciante: false,
+    salario: "R$ 7.500 - R$ 9.000",
+    regime: "CLT",
     descricao: "Construção de APIs RESTful e Server Actions de alta performance com Node.js, Prisma ORM e PostgreSQL.",
     publicadaEm: "2026-10-04",
     tags: ["Node.js", "Prisma", "PostgreSQL", "Docker"]
@@ -103,6 +118,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Júnior",
     local: "Remoto",
     aceitaIniciante: true,
+    salario: "R$ 3.600 - R$ 4.300",
+    regime: "CLT",
     descricao: "Desenvolvimento de funcionalidades para aplicativos mobile iOS e Android. Desejável conhecimento em Expo e consumo de APIs REST.",
     publicadaEm: "2026-10-04",
     tags: ["React Native", "Expo", "Mobile", "TypeScript"]
@@ -116,6 +133,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Estágio",
     local: "Híbrido (Recife - PE)",
     aceitaIniciante: true,
+    salario: "R$ 1.600 + Bolsa",
+    regime: "Estágio",
     descricao: "Apoio no tratamento de dados, criação de relatórios gerenciais e organização de bancos de dados relacionais.",
     publicadaEm: "2026-10-05",
     tags: ["SQL", "Excel", "Data Analytics", "ETL"]
@@ -129,6 +148,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Pleno",
     local: "Remoto",
     aceitaIniciante: false,
+    salario: "R$ 8.000 - R$ 9.500",
+    regime: "PJ",
     descricao: "Liderança técnica de componentes complexos, otimização de performance (Core Web Vitals) e arquitetura de design systems com Tailwind e shadcn/ui.",
     publicadaEm: "2026-10-05",
     tags: ["Next.js", "Tailwind CSS", "Design Systems", "Web Vitals"]
@@ -142,6 +163,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Júnior",
     local: "Remoto",
     aceitaIniciante: true,
+    salario: "R$ 3.800 - R$ 4.600",
+    regime: "CLT",
     descricao: "Manutenção e criação de novas rotas em sistemas web utilizando Python, Django e PostgreSQL. Ambiente colaborativo e focado em aprendizado.",
     publicadaEm: "2026-10-05",
     tags: ["Python", "Django", "PostgreSQL", "APIs"]
@@ -155,6 +178,8 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Estágio",
     local: "Presencial (Cabedelo - PB)",
     aceitaIniciante: true,
+    salario: "R$ 1.500 + VT",
+    regime: "Estágio",
     descricao: "Execução manual de testes em sistemas web e mobile, report de bugs e elaboração de relatórios de cobertura de testes.",
     publicadaEm: "2026-10-05",
     tags: ["Testes Manuais", "QA", "Jira", "Test Plans"]
@@ -168,13 +193,14 @@ export const vagasIniciais: Vaga[] = [
     senioridade: "Pleno",
     local: "Remoto",
     aceitaIniciante: false,
+    salario: "R$ 7.000 - R$ 8.500",
+    regime: "PJ",
     descricao: "Definição de fluxos de jornada complexos, testes com usuários reais e manutenção de sistemas de design corporativos.",
     publicadaEm: "2026-10-05",
     tags: ["Figma", "Design System", "Product Design", "UX"]
   }
 ];
 
-// Singleton em memória para persistência dinâmica durante execução
 const globalForVagas = globalThis as unknown as {
   vagasStore?: Vaga[];
 };
@@ -200,6 +226,8 @@ export function adicionarVaga(dados: Omit<Vaga, 'id' | 'publicadaEm'>): Vaga {
     ...dados,
     id: novoId,
     publicadaEm: hoje,
+    salario: dados.salario || 'A combinar',
+    regime: dados.regime || 'CLT',
     tags: dados.tags && dados.tags.length > 0 ? dados.tags : [dados.area, dados.senioridade]
   };
 

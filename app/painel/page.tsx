@@ -3,6 +3,7 @@ import { listarVagas } from '@/data/vagas';
 import { listarCandidaturas } from '@/data/candidaturas';
 import { obterSessaoAtual } from '@/lib/auth-session';
 import BotaoDeletarVaga from './BotaoDeletarVaga';
+import BotaoExportarCSV from './BotaoExportarCSV';
 
 export const metadata = {
   title: 'Painel da Empresa · Leque de Vagas',
@@ -90,7 +91,13 @@ export default async function PainelEmpresaPage() {
 
       {/* Candidaturas Recebidas */}
       <div className="bg-[#1B1632] border border-white/10 rounded-2xl p-6 space-y-4">
-        <h2 className="text-lg font-bold text-white">Últimas Candidaturas Recebidas</h2>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <h2 className="text-lg font-bold text-white">Últimas Candidaturas Recebidas</h2>
+          <BotaoExportarCSV 
+            candidaturas={candidaturasDaEmpresa} 
+            empresaNome={usuario?.empresaSlug === 'aurora-tech' ? 'Aurora Tech' : 'Empresa'} 
+          />
+        </div>
         {candidaturasDaEmpresa.length === 0 ? (
           <p className="text-sm text-[#8B84A0]">Ainda não há candidaturas enviadas para as vagas desta empresa.</p>
         ) : (
