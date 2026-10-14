@@ -3,7 +3,7 @@
 > **Disciplina:** Tecnologias para Frontend Avançado (Next.js 16 App Router) — 2026.2  
 > **Professor(a):** Nicoly Almeida (NickDev / Um Leque de Tecnologia)  
 > **Repositório Oficial:** [github.com/haendelribeiro/lequedevagas-web](https://github.com/haendelribeiro/lequedevagas-web)  
-> **Deploy de Referência:** https://lequedevagas-web.vercel.app  
+> **Execução Local:** `http://localhost:3000` (Next.js 16 + Turbopack)  
 > **Status:** 100% Concluído · 11 Testes Unitários Aprovados · CI/CD Ativo  
 
 ---
