@@ -1,0 +1,30 @@
+name: CI - Integracao Continua
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
+      - name: Instalar Dependências
+        run: npm install
+
+      - name: Executar Testes Automatizados (RBAC & Schemas Zod)
+        run: npm run test
+
+      - name: Compilar Projeto Next.js 16 (Turbopack)
+        run: npm run build
