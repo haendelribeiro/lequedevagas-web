@@ -4,6 +4,7 @@ import { listarCandidaturas } from '@/data/candidaturas';
 import { obterSessaoAtual } from '@/lib/auth-session';
 import BotaoDeletarVaga from './BotaoDeletarVaga';
 import BotaoExportarCSV from './BotaoExportarCSV';
+import SeletorStatusCandidatura from './SeletorStatusCandidatura';
 
 export const metadata = {
   title: 'Painel da Empresa · Leque de Vagas',
@@ -103,22 +104,26 @@ export default async function PainelEmpresaPage() {
         ) : (
           <div className="space-y-3">
             {candidaturasDaEmpresa.map(cand => (
-              <div key={cand.id} className="p-4 rounded-xl bg-[#08070E] border border-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                <div>
-                  <div className="flex items-center gap-2">
+              <div key={cand.id} className="p-4 rounded-xl bg-[#08070E] border border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
                     <span className="font-bold text-sm text-white">{cand.nome}</span>
                     <span className="text-xs text-[#8B84A0] font-mono">({cand.email})</span>
+                    <span className="text-[11px] text-[#8B84A0] font-mono">· {cand.criadoEm}</span>
                   </div>
                   <p className="text-xs text-[#B4AEC6] mt-1 line-clamp-1 italic">"{cand.apresentacao}"</p>
                 </div>
-                <a 
-                  href={cand.linkedin} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-xs text-[#A98CE0] hover:underline shrink-0"
-                >
-                  Ver Perfil ↗
-                </a>
+                <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
+                  <SeletorStatusCandidatura candidaturaId={cand.id} statusInicial={cand.status} />
+                  <a 
+                    href={cand.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-xs text-[#A98CE0] hover:underline"
+                  >
+                    Ver Perfil ↗
+                  </a>
+                </div>
               </div>
             ))}
           </div>

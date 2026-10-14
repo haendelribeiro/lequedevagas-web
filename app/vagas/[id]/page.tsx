@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import FormularioCandidatura from './FormularioCandidatura';
 import BotaoFavorito from '../BotaoFavorito';
 import BotaoCompartilhar from '../BotaoCompartilhar';
+import CalculadorMatch from './CalculadorMatch';
 
 type Props = {
   params: Promise<{
@@ -120,10 +121,18 @@ export default async function DetalheVagaPage({ params }: Props) {
           )}
         </div>
 
-        {/* Formulário de Candidatura (Frente 3) */}
-        <div className="bg-[#1B1632] border border-white/10 p-6 rounded-3xl space-y-4 h-fit">
-          <h2 className="text-xl font-bold text-white border-b border-white/10 pb-3">Candidatar-se</h2>
-          <FormularioCandidatura vagaId={vaga.id} />
+        {/* Formulário de Candidatura (Frente 3) & Medidor de Afinidade */}
+        <div className="space-y-6 h-fit">
+          <CalculadorMatch 
+            titulo={vaga.titulo} 
+            tags={vaga.tags} 
+            aceitaIniciante={vaga.aceitaIniciante} 
+          />
+
+          <div className="bg-[#1B1632] border border-white/10 p-6 rounded-3xl space-y-4">
+            <h2 className="text-xl font-bold text-white border-b border-white/10 pb-3">Candidatar-se</h2>
+            <FormularioCandidatura vagaId={vaga.id} />
+          </div>
         </div>
       </div>
     </div>

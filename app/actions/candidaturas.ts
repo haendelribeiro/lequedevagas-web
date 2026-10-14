@@ -59,3 +59,19 @@ export async function enviarCandidaturaAction(
     mensagemGeral: '🎉 Sua candidatura foi enviada com sucesso! A empresa entrará em contato em breve.'
   };
 }
+
+export async function atualizarStatusCandidaturaAction(
+  candidaturaId: string,
+  novoStatus: import('@/data/candidaturas').StatusCandidatura
+) {
+  const { atualizarStatusCandidatura } = await import('@/data/candidaturas');
+  const sucesso = atualizarStatusCandidatura(candidaturaId, novoStatus);
+
+  if (sucesso) {
+    revalidatePath('/painel');
+    return { success: true };
+  }
+
+  return { success: false, erro: 'Candidatura não encontrada.' };
+}
+

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { obterSessaoAtual } from '@/lib/auth-session';
 import { logoutAction } from '@/app/actions/auth';
+import BarraComandoGlobal from './components/BarraComandoGlobal';
 
 export const metadata: Metadata = {
   title: 'Leque de Vagas — Oportunidades Tech para Migração de Carreira',
@@ -40,6 +41,8 @@ export default async function RootLayout({
                   Painel da Empresa
                 </Link>
               )}
+
+              <BarraComandoGlobal />
 
               <Link href="/vagas/nova" className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#F24487] to-[#7B4FD0] text-white font-semibold hover:shadow-lg hover:shadow-[#F24487]/20 transition-all text-xs sm:text-sm">
                 + Publicar

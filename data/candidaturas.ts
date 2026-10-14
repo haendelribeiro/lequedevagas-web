@@ -1,3 +1,5 @@
+export type StatusCandidatura = 'recebido' | 'em_analise' | 'entrevista' | 'aprovada' | 'rejeitada';
+
 export type Candidatura = {
   id: string;
   vagaId: string;
@@ -6,6 +8,7 @@ export type Candidatura = {
   linkedin: string;
   apresentacao: string;
   criadoEm: string;
+  status?: StatusCandidatura;
 };
 
 export const candidaturasIniciais: Candidatura[] = [
@@ -16,7 +19,8 @@ export const candidaturasIniciais: Candidatura[] = [
     email: "maria.souza@email.com",
     linkedin: "https://linkedin.com/in/mariaclarasouza",
     apresentacao: "Estudante de transição de carreira, apaixonada por React e Next.js. Já construí projetos reais.",
-    criadoEm: "2026-10-02"
+    criadoEm: "2026-10-02",
+    status: "em_analise"
   },
   {
     id: "cand-02",
@@ -25,7 +29,8 @@ export const candidaturasIniciais: Candidatura[] = [
     email: "lucas.mendes@email.com",
     linkedin: "https://linkedin.com/in/lucasmendes-dev",
     apresentacao: "Migrando de engenharia civil para front-end. Desenvolvi aplicações web completas com Tailwind e TypeScript.",
-    criadoEm: "2026-10-03"
+    criadoEm: "2026-10-03",
+    status: "recebido"
   }
 ];
 
@@ -55,10 +60,23 @@ export function adicionarCandidatura(dados: Omit<Candidatura, 'id' | 'criadoEm'>
   const novaCandidatura: Candidatura = {
     ...dados,
     id: novoId,
-    criadoEm: hoje
+    criadoEm: hoje,
+    status: dados.status || 'recebido'
   };
 
   store.unshift(novaCandidatura);
   globalForCandidaturas.candidaturasStore = store;
   return novaCandidatura;
 }
+
+export function atualizarStatusCandidatura(id: string, novoStatus: StatusCandidatura): boolean {
+  const store = globalForCandidaturas.candidaturasStore || candidaturasIniciais;
+  const candidatura = store.find((c) => c.id === id);
+  if (candidatura) {
+    candidatura.status = novoStatus;
+    globalForCandidaturas.candidaturasStore = store;
+    return true;
+  }
+  return false;
+}
+

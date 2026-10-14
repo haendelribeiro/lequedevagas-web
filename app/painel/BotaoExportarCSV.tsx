@@ -15,13 +15,14 @@ export default function BotaoExportarCSV({ candidaturas, empresaNome = 'empresa'
     }
 
     // Cabeçalho da planilha
-    const cabecalhos = ['ID', 'ID da Vaga', 'Nome do Candidato', 'E-mail', 'LinkedIn / Portfolio', 'Data de Envio', 'Carta de Apresentacao'];
+    const cabecalhos = ['ID', 'ID da Vaga', 'Nome do Candidato', 'Status', 'E-mail', 'LinkedIn / Portfolio', 'Data de Envio', 'Carta de Apresentacao'];
     
     // Linhas de dados formatadas
     const linhas = candidaturas.map(c => [
       `"${c.id}"`,
       `"${c.vagaId}"`,
       `"${c.nome.replace(/"/g, '""')}"`,
+      `"${c.status || 'recebido'}"`,
       `"${c.email.replace(/"/g, '""')}"`,
       `"${c.linkedin.replace(/"/g, '""')}"`,
       `"${c.criadoEm}"`,

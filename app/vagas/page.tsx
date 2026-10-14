@@ -4,6 +4,7 @@ import PaginacaoVagas from './PaginacaoVagas';
 import EstatisticasMercado from './EstatisticasMercado';
 import BotaoFavorito from './BotaoFavorito';
 import BotaoCompartilhar from './BotaoCompartilhar';
+import ModalVagasSalvas from './ModalVagasSalvas';
 
 export const metadata = {
   title: 'Mural de Vagas · Leque de Vagas',
@@ -67,12 +68,15 @@ export default async function MuralDeVagasPage({ searchParams }: Props) {
           </p>
         </div>
 
-        <Link 
-          href="/vagas/nova" 
-          className="px-4 py-2 rounded-full bg-[#F24487] text-white text-sm font-semibold hover:bg-[#E73982] transition-colors"
-        >
-          + Publicar Nova Vaga
-        </Link>
+        <div className="flex items-center gap-3">
+          <ModalVagasSalvas todasVagas={todasVagas} />
+          <Link 
+            href="/vagas/nova" 
+            className="px-4 py-2 rounded-full bg-[#F24487] text-white text-sm font-semibold hover:bg-[#E73982] transition-colors"
+          >
+            + Publicar Nova Vaga
+          </Link>
+        </div>
       </div>
 
       {/* Estatísticas de Mercado / Data Viz (Frente 4) */}
