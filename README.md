@@ -155,5 +155,7 @@ O projeto conta com **11 testes unitários** automatizados cobrindo as regras de
 
 ## 👥 Autores & Contribuidores
 
-* **Haendel Ribeiro** — *Desenvolvedor e Arquiteto de Software* — [GitHub](https://github.com/haendelribeiro)
-* Desenvolvido como projeto prático da disciplina **Tecnologias para Frontend Avançado (2026.2)** sob orientação da professora **Nicoly Almeida (NickDev)**.
+* **Haendel Ribeiro** — *Desenvolvedor e Arquiteto de Software* — [@haendelribeiro](https://github.com/haendelribeiro)
+* **Artur Trajano** — *Desenvolvedor Full Stack & Colaborador* — [@TrajanoMedeiros](https://github.com/TrajanoMedeiros)
+
+Desenvolvido em equipe como projeto prático da disciplina **Tecnologias para Frontend Avançado (2026.2)** sob orientação da professora **Nicoly Almeida (NickDev)**.
